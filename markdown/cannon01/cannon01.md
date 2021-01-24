@@ -63,7 +63,7 @@ main.tscn中只把我们的大炮放置好，让炮管可以在一定角度内�
 存为zidan.tscn
 
 ## 主场景添加脚本
-这下重头戏来了，我们先在main.tscn场景中，为根节点添加一个脚本，名为main.gd，内容如下：
+这下重头戏来了，我们先在main.tscn场景中，为根节点添加一个脚本，名为`main.gd`，内容如下：
 ```c
 extends Node2D
 
