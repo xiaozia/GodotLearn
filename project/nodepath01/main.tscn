@@ -9,6 +9,7 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+labelPath = NodePath("Control3/Label3")
 
 [node name="Label" type="Label" parent="."]
 margin_right = 40.0
@@ -24,10 +25,28 @@ __meta__ = {
 [node name="Control2" type="Control" parent="."]
 margin_right = 40.0
 margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Label3" type="Label" parent="Control2"]
 margin_right = 40.0
 margin_bottom = 14.0
+text = "123"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control3" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Label3" type="Label" parent="Control3"]
+margin_left = 104.0
+margin_top = 60.0
+margin_right = 144.0
+margin_bottom = 74.0
+text = "456"
 __meta__ = {
 "_edit_use_anchors_": false
 }
