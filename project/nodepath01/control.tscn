@@ -1,21 +1,6 @@
 [gd_scene load_steps=2 format=2]
 
-[sub_resource type="GDScript" id=1]
-script/source = "extends Label
-
-func _ready():
-	print($\".\".name)
-	print(get_node(\".\").name)
-	
-	print($\"../\".name)
-	print($\"../../2/Label2\".name)
-	
-	print(get_node(\"../../2/Label2\").name)
-	print(get_parent().get_parent().get_node(\"2/Label2\").name)
-	print(get_parent().get_parent().find_node(\"Label2\", true, false).name)
-	
-	
-"
+[ext_resource path="res://control.gd" type="Script" id=1]
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -35,7 +20,7 @@ __meta__ = {
 margin_right = 40.0
 margin_bottom = 14.0
 text = "123"
-script = SubResource( 1 )
+script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
