@@ -1,3 +1,5 @@
+[【手把手带你Godot游戏开发 第一弹】零基础入门案例：FlappyBird（教程目录及源代码）](https://orzgame.blog.csdn.net/article/details/105266192)
+
 
 [【手把手带你Godot游戏开发】FlappyBird：4. 无限地面](https://orzgame.blog.csdn.net/article/details/104727983)
 
