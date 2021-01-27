@@ -75,6 +75,8 @@ script = ExtResource( 6 )
 position = Vector2( 375, 667 )
 z_index = 1
 gravity_scale = 10.0
+contacts_reported = 1
+contact_monitor = true
 script = ExtResource( 4 )
 __meta__ = {
 "_edit_group_": true
