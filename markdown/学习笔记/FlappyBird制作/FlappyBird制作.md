@@ -8,3 +8,5 @@
 [Godot的场景树](https://www.cnblogs.com/jhonkkk/p/14241299.html)
 
 [Godot基础教程06：类的概念与帮助查询](https://blog.csdn.net/shalyun/article/details/104982219)
+
+[scratch版FlappyBird飞翔的小鸟，素材（图片，音效）+自创版本源码下载](https://bbs.csdn.net/topics/398357321)
