@@ -8,16 +8,27 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "Reference",
+"class": "FileHelper",
+"language": "GDScript",
+"path": "res://Scripts/FileHelper.gd"
+} ]
 _global_script_class_icons={
-
+"FileHelper": ""
 }
 
 [application]
 
 config/name="FlappyBird"
 run/main_scene="res://Game.tscn"
+config/use_custom_user_dir=true
 config/icon="res://icon.png"
+
+[autoload]
+
+AudioManager="*res://Managers/AudioManager.tscn"
+GameData="*res://Scripts/GameData.gd"
 
 [display]
 

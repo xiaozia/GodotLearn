@@ -6,6 +6,7 @@ func _ready():
 
 func _physics_process(delta):
 	if Input.is_mouse_button_pressed(1):
+		AudioManager.play("sfx_swooshing")#音效
 		linear_velocity = Vector2.UP*500
 		angular_velocity = -3.0
 	if rotation_degrees < -30:#最大仰角30度
@@ -16,5 +17,7 @@ func _physics_process(delta):
 
 func on_body_entered(_body):
 	if _body is StaticBody2D:#先通过body的类型判断一下所撞之物是否为一个"StaticBody2D"
+		AudioManager.play("sfx_hit")#音效
+		GameData.update_record()
 		print("Die.....")
 
