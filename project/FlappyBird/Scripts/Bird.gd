@@ -18,6 +18,12 @@ func _physics_process(delta):
 func on_body_entered(_body):
 	if _body is StaticBody2D:#先通过body的类型判断一下所撞之物是否为一个"StaticBody2D"
 		AudioManager.play("sfx_hit")#音效
-		GameData.update_record()
+		call_deferred("set_physics_process",false)#停用_physics_process(delta)
+		call_deferred("set_contact_monitor",false)#关闭碰撞检测
+		AudioManager.play("sfx_hit")#播放碰撞音效
+		$AnimationPlayer.play("die")#动画切换到死亡状态
+		GameData.update_record()#更新最好成绩记录
+		get_tree().call_group("GAME_STATE","on_game_over")#调用GAME_STATE的on_game_over方法
+
 		print("Die.....")
 

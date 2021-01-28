@@ -1,7 +1,64 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Fonts/new_dynamicfont.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Objects/LabelScore.gd" type="Script" id=2]
+[ext_resource path="res://FlappyBirdAssets/img/score.png" type="Texture" id=3]
+[ext_resource path="res://Fonts/outer-font.TTF" type="DynamicFontData" id=4]
+[ext_resource path="res://Scripts/InfoBoard.gd" type="Script" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 20
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 20
+font_data = ExtResource( 4 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "hide"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 229, 1182 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "show"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 229, 1182 ), Vector2( 229, 600 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ null ],
+"method": "on_board_shown"
+} ]
+}
 
 [node name="UI" type="Control"]
 anchor_right = 1.0
@@ -19,9 +76,52 @@ custom_fonts/font = ExtResource( 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 3
 custom_constants/shadow_offset_y = 3
+text = "0"
 align = 1
 valign = 1
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="TextureInfoBoard" type="TextureRect" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -146.0
+margin_top = -734.0
+margin_right = 146.0
+margin_bottom = -582.0
+texture = ExtResource( 3 )
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LabelCurrent" type="Label" parent="TextureInfoBoard"]
+margin_left = 204.0
+margin_top = 46.0
+margin_right = 279.0
+margin_bottom = 71.0
+custom_fonts/font = SubResource( 1 )
+text = "0000"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LabelRecord" type="Label" parent="TextureInfoBoard"]
+margin_left = 204.0
+margin_top = 99.0
+margin_right = 279.0
+margin_bottom = 124.0
+custom_fonts/font = SubResource( 2 )
+text = "0000"
+align = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TextureInfoBoard"]
+autoplay = "hide"
+anims/hide = SubResource( 3 )
+anims/show = SubResource( 4 )
+[connection signal="animation_finished" from="TextureInfoBoard/AnimationPlayer" to="LabelScore" method="on_board_shown"]
