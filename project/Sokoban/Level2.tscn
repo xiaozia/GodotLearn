@@ -32,7 +32,7 @@ points = PoolVector2Array( 0, 0, 14, 0, 14, 14, 0, 14 )
 } ]
 0/z_index = 0
 
-[node name="Level1" type="Node2D"]
+[node name="Level2" type="Node2D"]
 script = ExtResource( 4 )
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -40,19 +40,19 @@ tile_set = SubResource( 2 )
 cell_size = Vector2( 16, 16 )
 cell_custom_transform = Transform2D( 0, 0, 0, 0, 0, 0 )
 format = 1
-tile_data = PoolIntArray( 131076, 0, 0, 131077, 0, 0, 131078, 0, 0, 131079, 0, 0, 131080, 0, 0, 131081, 0, 0, 131082, 0, 0, 131083, 0, 0, 131084, 0, 0, 131085, 0, 0, 131086, 0, 0, 131087, 0, 0, 196612, 0, 0, 196623, 0, 0, 262148, 0, 0, 262159, 0, 0, 327684, 0, 0, 327695, 0, 0, 393220, 0, 0, 393231, 0, 0, 458756, 0, 0, 458767, 0, 0, 524292, 0, 0, 524303, 0, 0, 589828, 0, 0, 589829, 0, 0, 589830, 0, 0, 589831, 0, 0, 589832, 0, 0, 589833, 0, 0, 589834, 0, 0, 589835, 0, 0, 589836, 0, 0, 589837, 0, 0, 589838, 0, 0, 589839, 0, 0 )
+tile_data = PoolIntArray( 131081, 0, 0, 131082, 0, 0, 131083, 0, 0, 131084, 0, 0, 131085, 0, 0, 131086, 0, 0, 131087, 0, 0, 196617, 0, 0, 196623, 0, 0, 262153, 0, 0, 262159, 0, 0, 327688, 0, 0, 327689, 0, 0, 327695, 0, 0, 393220, 0, 0, 393221, 0, 0, 393222, 0, 0, 393223, 0, 0, 393224, 0, 0, 393231, 0, 0, 458756, 0, 0, 458767, 0, 0, 524292, 0, 0, 524303, 0, 0, 589828, 0, 0, 589829, 0, 0, 589830, 0, 0, 589831, 0, 0, 589832, 0, 0, 589833, 0, 0, 589834, 0, 0, 589835, 0, 0, 589836, 0, 0, 589837, 0, 0, 589838, 0, 0, 589839, 0, 0 )
 
 [node name="player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 80, 64 )
+position = Vector2( 112, 112 )
 
 [node name="box" parent="." instance=ExtResource( 3 )]
-position = Vector2( 160, 80 )
+position = Vector2( 176, 80 )
 
 [node name="box2" parent="." instance=ExtResource( 3 )]
-position = Vector2( 160, 112 )
+position = Vector2( 176, 112 )
 
 [node name="spot" parent="." instance=ExtResource( 5 )]
-position = Vector2( 208, 80 )
+position = Vector2( 208, 64 )
 
 [node name="spot2" parent="." instance=ExtResource( 5 )]
 position = Vector2( 208, 96 )
