@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/goal.png-0c667cdea5a1e49b564b867d565eb4ec.stex"
+path="res://.import/goal.png-e405d3ca8b50495d2b0a4e851701fd6a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/goal.png"
-dest_files=[ "res://.import/goal.png-0c667cdea5a1e49b564b867d565eb4ec.stex" ]
+source_file="res://Assets/goal.png"
+dest_files=[ "res://.import/goal.png-e405d3ca8b50495d2b0a4e851701fd6a.stex" ]
 
 [params]
 
