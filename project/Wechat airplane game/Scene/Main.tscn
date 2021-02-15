@@ -1,0 +1,271 @@
+[gd_scene load_steps=30 format=2]
+
+[ext_resource path="res://Assets/image/BJ.png" type="Texture" id=1]
+[ext_resource path="res://Assets/image/aircraft_1.png" type="Texture" id=2]
+[ext_resource path="res://Assets/image/aircraft_2.png" type="Texture" id=3]
+[ext_resource path="res://Assets/image/aircraft_explode_4.png" type="Texture" id=4]
+[ext_resource path="res://Assets/image/aircraft_explode_3.png" type="Texture" id=5]
+[ext_resource path="res://Assets/image/aircraft_explode_2.png" type="Texture" id=6]
+[ext_resource path="res://Assets/image/aircraft_explode_1.png" type="Texture" id=7]
+[ext_resource path="res://Scripts/Player.gd" type="Script" id=8]
+[ext_resource path="res://Scripts/Main.gd" type="Script" id=9]
+[ext_resource path="res://Assets/image/life.png" type="Texture" id=10]
+[ext_resource path="res://Assets/image/pause.png" type="Texture" id=11]
+[ext_resource path="res://Assets/image/pause_2.png" type="Texture" id=12]
+[ext_resource path="res://Scripts/pausedButton.gd" type="Script" id=13]
+[ext_resource path="res://Assets/font/Deeko_Comic.ttf" type="DynamicFontData" id=14]
+[ext_resource path="res://Assets/image/remain_bomb.png" type="Texture" id=15]
+[ext_resource path="res://Assets/image/gameover.png" type="Texture" id=16]
+[ext_resource path="res://Assets/image/again.png" type="Texture" id=17]
+[ext_resource path="res://Assets/Sounds/game_music.wav" type="AudioStream" id=18]
+[ext_resource path="res://Assets/Sounds/bullet.wav" type="AudioStream" id=19]
+[ext_resource path="res://Assets/Sounds/use_bomb.wav" type="AudioStream" id=20]
+[ext_resource path="res://Assets/Sounds/game_over.wav" type="AudioStream" id=21]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 7 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "over",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "fly",
+"speed": 5.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 35.6861
+height = 41.7941
+
+[sub_resource type="DynamicFontData" id=4]
+font_path = "res://Assets/font/Deeko_Comic.ttf"
+
+[sub_resource type="DynamicFont" id=5]
+size = 35
+font_data = SubResource( 4 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 50
+font_data = ExtResource( 14 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 30
+font_data = ExtResource( 14 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 60
+font_data = ExtResource( 14 )
+
+[sub_resource type="Animation" id=3]
+length = 3.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("BJ:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 240, 426 ), Vector2( 240, 1278 ) ]
+}
+
+[node name="Main" type="Node2D"]
+script = ExtResource( 9 )
+
+[node name="BJ" type="Sprite" parent="."]
+position = Vector2( 240, 426 )
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="BJ" type="Sprite" parent="BJ"]
+position = Vector2( 0.359, -851.495 )
+texture = ExtResource( 1 )
+
+[node name="Player" type="RigidBody2D" parent="."]
+position = Vector2( 240, 709 )
+mode = 1
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Player"]
+frames = SubResource( 1 )
+animation = "fly"
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+shape = SubResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="bomb_wait_Timer" type="Timer" parent="Player"]
+wait_time = 3.0
+
+[node name="use_bomb" type="AudioStreamPlayer2D" parent="Player"]
+position = Vector2( -240, -709 )
+stream = ExtResource( 20 )
+
+[node name="Bullet_Timer" type="Timer" parent="."]
+process_mode = 0
+wait_time = 0.3
+autostart = true
+
+[node name="enemy1_Timer" type="Timer" parent="."]
+process_mode = 0
+autostart = true
+
+[node name="enemy2_Timer" type="Timer" parent="."]
+process_mode = 0
+wait_time = 5.0
+autostart = true
+
+[node name="enemy3_Timer" type="Timer" parent="."]
+process_mode = 0
+wait_time = 8.0
+autostart = true
+
+[node name="double_Timer" type="Timer" parent="."]
+process_mode = 0
+wait_time = 15.0
+autostart = true
+
+[node name="bomb_Timer" type="Timer" parent="."]
+process_mode = 0
+wait_time = 20.0
+autostart = true
+
+[node name="life" type="Sprite" parent="."]
+position = Vector2( 391.278, 684.297 )
+texture = ExtResource( 10 )
+
+[node name="life_Label" type="Label" parent="life"]
+margin_left = 40.0
+margin_top = -20.0
+margin_right = 80.0
+margin_bottom = 22.0
+custom_fonts/font = SubResource( 5 )
+text = "3"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="bomb_Sprite" type="Sprite" parent="."]
+position = Vector2( 53.8174, 711.398 )
+texture = ExtResource( 15 )
+
+[node name="Label" type="Label" parent="bomb_Sprite"]
+margin_left = 37.0
+margin_top = -29.0
+margin_right = 113.0
+margin_bottom = 30.0
+custom_fonts/font = SubResource( 7 )
+text = "x 3"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="pausedButton" type="TextureButton" parent="."]
+pause_mode = 2
+margin_left = 421.595
+margin_top = 4.48985
+margin_right = 463.595
+margin_bottom = 49.4898
+texture_normal = ExtResource( 11 )
+texture_hover = ExtResource( 12 )
+script = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScoreLabel" type="Label" parent="."]
+margin_left = 6.0
+margin_top = 1.0
+margin_right = 157.0
+margin_bottom = 38.0
+custom_fonts/font = SubResource( 6 )
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="game_over_Panel" type="Panel" parent="."]
+margin_left = -0.629974
+margin_top = 0.370041
+margin_right = 479.37
+margin_bottom = 849.37
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="game_over_Panel"]
+margin_left = 124.732
+margin_top = 42.8373
+margin_right = 364.732
+margin_bottom = 113.837
+custom_fonts/font = SubResource( 8 )
+text = "游戏结束"
+
+[node name="Label2" type="Label" parent="game_over_Panel"]
+margin_left = 3.0
+margin_top = 122.0
+margin_right = 479.0
+margin_bottom = 193.0
+custom_fonts/font = SubResource( 8 )
+text = "分数："
+
+[node name="exit" type="TextureButton" parent="game_over_Panel"]
+margin_left = 53.8782
+margin_top = 565.721
+margin_right = 441.878
+margin_bottom = 635.721
+texture_normal = ExtResource( 16 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="again" type="TextureButton" parent="game_over_Panel"]
+margin_left = 53.8782
+margin_top = 409.72
+margin_right = 441.878
+margin_bottom = 479.72
+texture_normal = ExtResource( 17 )
+
+[node name="game_music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 18 )
+autoplay = true
+
+[node name="game_over_music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 21 )
+autoplay = true
+
+[node name="bullet" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 19 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Main"
+anims/Main = SubResource( 3 )
+[connection signal="game_over" from="Player" to="." method="_on_Player_game_over"]
+[connection signal="shoot" from="Player" to="." method="_on_Player_shoot"]
+[connection signal="timeout" from="Player/bomb_wait_Timer" to="Player" method="_on_bomb_wait_Timer_timeout"]
+[connection signal="finished" from="Player/use_bomb" to="." method="_on_bullet_finished"]
+[connection signal="timeout" from="Bullet_Timer" to="Player" method="_on_Bullet_Timer_timeout"]
+[connection signal="timeout" from="enemy1_Timer" to="." method="_on_enemy1_Timer_timeout"]
+[connection signal="timeout" from="enemy2_Timer" to="." method="_on_enemy2_Timer_timeout"]
+[connection signal="timeout" from="enemy3_Timer" to="." method="_on_enemy3_Timer_timeout"]
+[connection signal="timeout" from="double_Timer" to="." method="_on_double_Timer_timeout"]
+[connection signal="timeout" from="bomb_Timer" to="." method="_on_bomb_Timer_timeout"]
+[connection signal="pressed" from="pausedButton" to="pausedButton" method="_on_pausedButton_pressed"]
+[connection signal="pressed" from="game_over_Panel/exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="game_over_Panel/again" to="." method="_on_again_pressed"]
+[connection signal="finished" from="game_music" to="." method="_on_game_music_finished"]
+[connection signal="finished" from="game_over_music" to="." method="_on_game_music_finished"]
+[connection signal="finished" from="bullet" to="." method="_on_bullet_finished"]

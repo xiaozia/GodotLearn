@@ -1,0 +1,67 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://Assets/image/aircraft_large_underattack.png" type="Texture" id=1]
+[ext_resource path="res://Assets/image/aircraft_large_explode_6.png" type="Texture" id=2]
+[ext_resource path="res://Assets/image/aircraft_large_explode_2.png" type="Texture" id=3]
+[ext_resource path="res://Assets/image/aircraft_large_explode_5.png" type="Texture" id=4]
+[ext_resource path="res://Assets/image/aircraft_large_explode_4.png" type="Texture" id=5]
+[ext_resource path="res://Assets/image/aircraft_large_idle_1.png" type="Texture" id=6]
+[ext_resource path="res://Assets/image/aircraft_large_explode_1.png" type="Texture" id=7]
+[ext_resource path="res://Assets/image/aircraft_large_idle_2.png" type="Texture" id=8]
+[ext_resource path="res://Assets/image/aircraft_large_explode_3.png" type="Texture" id=9]
+[ext_resource path="res://Scripts/enemy_3.gd" type="Script" id=10]
+[ext_resource path="res://Assets/Sounds/enemy3_down.wav" type="AudioStream" id=11]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 7 ), ExtResource( 3 ), ExtResource( 9 ), ExtResource( 5 ), ExtResource( 4 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "over",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "hint",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "fly",
+"speed": 5.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 81.6732
+height = 81.1774
+
+[node name="enemy_3" type="Area2D"]
+script = ExtResource( 10 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 0, 0.44545 )
+frames = SubResource( 1 )
+animation = "fly"
+frame = 1
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 2 )
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+position = Vector2( 0.379455, -0.890919 )
+scale = Vector2( 8.20968, 12.2699 )
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+margin_left = -81.0
+margin_top = -152.0
+margin_right = 81.0
+margin_bottom = -130.0
+value = 100.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="over" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 11 )
+[connection signal="body_entered" from="." to="." method="_on_enemy_3_body_entered"]
+[connection signal="viewport_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_viewport_exited"]

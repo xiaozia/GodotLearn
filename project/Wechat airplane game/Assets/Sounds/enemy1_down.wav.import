@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/enemy1_down.wav-14a7fadc98635b7de3c0811da284f813.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/enemy1_down.wav"
+dest_files=[ "res://.import/enemy1_down.wav-14a7fadc98635b7de3c0811da284f813.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
