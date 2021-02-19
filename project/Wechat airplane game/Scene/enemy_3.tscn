@@ -41,7 +41,6 @@ script = ExtResource( 10 )
 position = Vector2( 0, 0.44545 )
 frames = SubResource( 1 )
 animation = "fly"
-frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
